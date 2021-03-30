@@ -62,7 +62,7 @@ namespace uTinyRipper
 
 		public static string ToLongPath(string path, bool force)
 		{
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
 				if (RunetimeUtils.IsRunningOnNetCore)
 				{

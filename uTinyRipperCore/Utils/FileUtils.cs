@@ -79,7 +79,7 @@ namespace uTinyRipper
 
 		public static string ToLongPath(string path)
 		{
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
 				if (RunetimeUtils.IsRunningOnNetCore)
 				{
@@ -177,7 +177,7 @@ namespace uTinyRipper
 
 		public static bool IsReservedName(string name)
 		{
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
 				return ReservedNames.Contains(name.ToLower());
 			}
