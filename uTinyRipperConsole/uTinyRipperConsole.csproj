@@ -5,10 +5,10 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1EC7FAF7-5D39-4868-A06F-C93018CD134F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>uTinyRipperConsole</RootNamespace>
     <AssemblyName>uTinyRipperCmd</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -25,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
     <BaseIntermediateOutputPath>..\Bins\obj\</BaseIntermediateOutputPath>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,9 +50,11 @@
     <BaseIntermediateOutputPath>..\Bins\obj\</BaseIntermediateOutputPath>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <ApplicationManifest>App.manifest</ApplicationManifest>
+    <StartupObject />
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace uTinyRipper
 {
@@ -78,7 +79,7 @@ namespace uTinyRipper
 
 		public static string ToLongPath(string path)
 		{
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
 				if (RunetimeUtils.IsRunningOnNetCore)
 				{
@@ -110,6 +111,11 @@ namespace uTinyRipper
 				}
 			}
 			return path;
+		}
+
+		public static string FixInvalidNameCharacters(string path)
+		{
+			return FileNameRegex.Replace(path, string.Empty);
 		}
 
 		public static string GetFullPath(string path)
@@ -171,21 +177,29 @@ namespace uTinyRipper
 
 		public static bool IsReservedName(string name)
 		{
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
-				return s_reservedNames.Contains(name.ToLower());
+				return ReservedNames.Contains(name.ToLower());
 			}
 			return false;
+		}
+
+		private static Regex GenerateFileNameRegex()
+		{
+			string invalidChars = new string(Path.GetInvalidFileNameChars());
+			string escapedChars = Regex.Escape(invalidChars);
+			return new Regex($"[{escapedChars}]");
 		}
 
 		public const int MaxFileNameLength = 256;
 		public const int MaxFilePathLength = 260;
 
-		private static readonly HashSet<string> s_reservedNames = new HashSet<string>()
+		private static readonly HashSet<string> ReservedNames = new HashSet<string>()
 		{
 			"aux", "con", "nul", "prn",
 			"com1", "com2", "com3", "com4", "com5", "com6", "com7", "com8", "com9",
 			"lpt1", "lpt2", "lpt3", "lpt4", "lpt5", "lpt6", "lpt7", "lpt8", "lpt9",
 		};
+		private static readonly Regex FileNameRegex = GenerateFileNameRegex();
 	}
 }

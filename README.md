@@ -6,6 +6,10 @@
 
 uTinyRipper is a tool for extracting assets from serialized files (*CAB-*\*, *\*.assets*, *\*.sharedAssets*, etc.) and assets bundles (*\*.unity3d*, *\*.assetbundle*, etc.) and conveting them into native Engine format.
 
+Important note: work on this project is suspended. Author is going to restart it from scratch, redirect development and focus on other things. So don't waste your time on PRs, propositions or complex issues. Only exception is bug fixes.
+
+Supported versions: 1.x to 2019.x (since development is suspended, 2020.x and greater versions won't be supported)
+
 ## Export features
 * Scenes
 * Prefabs (GameObjects with transform components)
@@ -63,16 +67,16 @@ uTinyRipper is a tool for extracting assets from serialized files (*CAB-*\*, *\*
 
 If you want to build a solution, you need:
 
- \- .NET Framework 4.6.1 + .NET Core 2.0 SDK
+ \- .NET Framework 4.7.2 + .NET Core 2.0 SDK
 
  \- Compiler with C# 7.3 syntax support (Visual Studio 2017)
 
 
 If you want to run binary files, you need to install:
 
- \- [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49982)
+ \- [.NET Framework 4.7.2](https://support.microsoft.com/en-us/help/4054530/microsoft-net-framework-4-7-2-offline-installer-for-windows)
  
- \- [Microsoft Visual C++ 2013](https://www.microsoft.com/en-us/download/details.aspx?id=40784) and [Microsoft Visual C++ 2015](https://www.microsoft.com/en-us/download/details.aspx?id=53840) Redistributables
+ \- [Microsoft Visual C++ 2015](https://www.microsoft.com/en-us/download/details.aspx?id=53840) Redistributables
 
  \- [Unity 2017.3.0f3 or greater](https://unity3d.com/get-unity/download/archive) (NOTE: editor version must be no less than game version)
  

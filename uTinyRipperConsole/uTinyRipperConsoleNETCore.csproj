@@ -1,41 +1,37 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-	<AssemblyName>uTinyRipperCmd</AssemblyName>
-	<RootNamespace>uTinyRipperConsole</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyName>uTinyRipperCmd</AssemblyName>
+    <RootNamespace>uTinyRipperConsole</RootNamespace>
+    <LangVersion>7.3</LangVersion>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>C:\Users\Jaeba\Documents\GitHub\UtinyRipper\Backup\uTinyRipperConsole\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE;NET_CORE</DefineConstants>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <OutputPath>..\Bins\CP\$(Configuration)\</OutputPath>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bins\CP\$(Configuration)\</OutputPath>
     <DefineConstants>TRACE;NET_CORE</DefineConstants>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Virtual|AnyCPU'">
     <DefineConstants>DEBUG;TRACE;NET_CORE;VIRTUAL</DefineConstants>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <OutputPath>..\Bins\CP\$(Configuration)\</OutputPath>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="App.config" />
     <None Remove="App.manifest" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\uTinyRipperCore\uTinyRipperCore.csproj" />
   </ItemGroup>
-
 </Project>

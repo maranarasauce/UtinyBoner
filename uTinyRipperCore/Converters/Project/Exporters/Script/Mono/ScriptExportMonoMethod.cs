@@ -8,12 +8,7 @@ namespace uTinyRipper.Converters.Script.Mono
 	{
 		public ScriptExportMonoMethod(MethodDefinition method)
 		{
-			if (method == null)
-			{
-				throw new ArgumentNullException(nameof(method));
-			}
-
-			Method = method;
+			Method = method ?? throw new ArgumentNullException(nameof(method));
 		}
 
 		public override void Init(IScriptExportManager manager)
@@ -34,7 +29,7 @@ namespace uTinyRipper.Converters.Script.Mono
 		public override ScriptExportType ReturnType => m_returnType;
 		public override IReadOnlyList<ScriptExportParameter> Parameters => m_parameters;
 
-		protected override string Keyword
+		public override string Keyword
 		{
 			get
 			{

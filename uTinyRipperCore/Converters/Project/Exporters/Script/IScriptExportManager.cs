@@ -11,6 +11,7 @@ namespace uTinyRipper.Converters.Script
 		ScriptExportDelegate RetrieveDelegate(TypeDefinition type);
 		ScriptExportAttribute RetrieveAttribute(CustomAttribute attribute);
 		ScriptExportMethod RetrieveMethod(MethodDefinition method);
+		ScriptExportConstructor RetrieveConstructor(MethodDefinition constructor);
 		ScriptExportProperty RetrieveProperty(PropertyDefinition property);
 		ScriptExportField RetrieveField(FieldDefinition field);
 		ScriptExportParameter RetrieveParameter(ParameterDefinition parameter);

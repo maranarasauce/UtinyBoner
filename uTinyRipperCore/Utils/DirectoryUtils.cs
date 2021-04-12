@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace uTinyRipper
 {
@@ -60,7 +62,7 @@ namespace uTinyRipper
 
 		public static string ToLongPath(string path, bool force)
 		{
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			if (true) //RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
 				if (RunetimeUtils.IsRunningOnNetCore)
 				{
@@ -80,7 +82,21 @@ namespace uTinyRipper
 			return path;
 		}
 
+		public static string FixInvalidPathCharacters(string path)
+		{
+			return PathRegex.Replace(path, string.Empty);
+		}
+
+		private static Regex GeneratePathRegex()
+		{
+			string invalidChars = new string(Path.GetInvalidFileNameChars().Except(new char[] { '\\', '/' }).ToArray());
+			string escapedChars = Regex.Escape(invalidChars);
+			return new Regex($"[{escapedChars}]");
+		}
+
 		public const string LongPathPrefix = @"\\?\";
 		public const int MaxDirectoryLength = 248;
+
+		private static readonly Regex PathRegex = GeneratePathRegex();
 	}
 }

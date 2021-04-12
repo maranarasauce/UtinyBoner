@@ -8,7 +8,7 @@ namespace uTinyRipper
 		static RunetimeUtils()
 		{
 			IsRunningOnMono = Type.GetType("Mono.Runtime") != null;
-			IsRunningOnNetCore = RuntimeInformation.FrameworkDescription.StartsWith(".NET Core", StringComparison.Ordinal);
+			IsRunningOnNetCore = true;// RuntimeInformation.FrameworkDescription.StartsWith(".NET Core", StringComparison.Ordinal);
 		}
 
 		public static bool IsRunningOnMono { get; }

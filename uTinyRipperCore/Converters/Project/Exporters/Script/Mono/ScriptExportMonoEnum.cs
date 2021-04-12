@@ -62,9 +62,10 @@ namespace uTinyRipper.Converters.Script.Mono
 
 
 		public override ScriptExportType Base => m_base;
-		public override string NestedName { get; }
-		public override string CleanNestedName { get; }
+		public override string CleanName => Type.Name;
 		public override string TypeName => Type.Name;
+		public override string CleanNestedName { get; }
+		public override string NestedName { get; }
 		public override string FullName { get; }
 		public override string Namespace => DeclaringType == null ? Type.Namespace : DeclaringType.Namespace;
 		public override string Module { get; }
@@ -72,7 +73,7 @@ namespace uTinyRipper.Converters.Script.Mono
 		public override ScriptExportType DeclaringType => m_declaringType;
 		public override IReadOnlyList<ScriptExportField> Fields => m_fields;
 
-		protected override string Keyword
+		public override string Keyword
 		{
 			get
 			{
