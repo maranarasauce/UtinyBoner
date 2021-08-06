@@ -1,14 +1,8 @@
-# uTinyRipper
-[![Download uTinyRipper](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/utinyripper/files)
-
-[![Build status](https://ci.appveyor.com/api/projects/status/yd78hqp83f7vjkwb?svg=true)](https://ci.appveyor.com/project/mafaca/utinyripper)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/UtinyRipper/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# uTinyBoner (uTinyRipper Fork made for BONEWORKS)
 
 uTinyRipper is a tool for extracting assets from serialized files (*CAB-*\*, *\*.assets*, *\*.sharedAssets*, etc.) and assets bundles (*\*.unity3d*, *\*.assetbundle*, etc.) and conveting them into native Engine format.
 
-Important note: work on this project is suspended. Author is going to restart it from scratch, redirect development and focus on other things. So don't waste your time on PRs, propositions or complex issues. Only exception is bug fixes.
-
-Supported versions: 1.x to 2019.x (since development is suspended, 2020.x and greater versions won't be supported)
+Supported version: 2018.4.10f1
 
 ## Export features
 * Scenes
@@ -26,7 +20,7 @@ Supported versions: 1.x to 2019.x (since development is suspended, 2020.x and gr
 * Terrains
 * TextAssets
 * Components:
-  * Joints (new!)
+  * Joints
   * MeshRenderer
   * SkinnedMeshRenderer
   * Animation
