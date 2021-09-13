@@ -87,6 +87,16 @@ namespace uTinyRipper
 			return PathRegex.Replace(path, string.Empty);
 		}
 
+		// Credits to https://stackoverflow.com/questions/58744/copy-the-entire-contents-of-a-directory-in-c-sharp
+		public static void CopyDirectoryFiles(string sourcePath, string targetPath) {
+			// Now Create all of the directories
+			foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
+				Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+			// Copy all the files & Replaces any files with the same name
+			foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+				File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+		}
+
 		private static Regex GeneratePathRegex()
 		{
 			string invalidChars = new string(Path.GetInvalidFileNameChars().Except(new char[] { '\\', '/' }).ToArray());

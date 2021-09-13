@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: zVRAO
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15406\n14;370;1906;1044;1832.026;508.9637;1.3;True;False\nNode;AmplifyShaderEditor.FunctionInput;4;-867.5,46;Float;False;Normal;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldNormalVector;3;-604.5,50;Float;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.WorldPosInputsNode;2;-596.5,-129;Float;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.CustomExpressionNode;1;-329.3997,-23.8;Float;False;return
+    CalculateShapeAO(posWs,vNormalWs)@;1;False;2;True;posWs;FLOAT3;0,0,0;In;;True;vNormalWs;FLOAT3;0,0,0;In;;AO;False;False;0;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-94.90005,-23.4;Float;False;True;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;3;0;4;0\nWireConnection;1;0;2;0\nWireConnection;1;1;3;0\nWireConnection;0;0;1;0\nASEEND*/\n//CHKSM=0E2E7ADD27B5AEE2F02DD5B6AECE085CBBF4724E"
+  m_functionName: 
+  m_description: 'Shape Based AO
+
+'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 1
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_additionalDirectives:
+    - {fileID: 0}
+    - {fileID: 0}
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems:
+    - LineType: 0
+      LineValue: vr_zAO.cginc
+    - LineType: 2
+      LineValue: multi_compile _ Z_SHAPEAO
+  m_nodeCategory: 5
+  m_customNodeCategory: 
+  m_previewPosition: 0

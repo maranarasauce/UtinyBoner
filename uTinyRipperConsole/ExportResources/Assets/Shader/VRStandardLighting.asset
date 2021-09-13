@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: VRStandardLighting
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15406\n14;370;1906;1044;-402.0255;565.543;1;True;False\nNode;AmplifyShaderEditor.CommentaryNode;60;134.0497,-288.008;Float;False;229.0061;432.4071;Diffuse;2;63;62;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;63;169.0657,-218.648;Float;False;158.3038;153.9739;;1;21;RGB;0.5066937,1,0.4411765,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;62;167.7198,-7.645158;Float;False;161.3119;125.3159;Used
+    for UV light ;1;61;A;0.350731,0.008326133,0.5661765,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;56;-2509.257,846.8894;Float;False;1203.571;731.0364;Lightmap
+    UVs;13;54;42;44;43;50;51;8;49;53;78;45;46;55;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;28;-1532.996,307.0898;Float;False;205.8975;174.0022;Anisotropic
+    variables;1;27;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;67;147.1385,608.7985;Float;False;217;206;vIndirectSpecular;1;24;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;68;140.6644,847.7751;Float;False;217;206;TransmissiveSunlight;1;25;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;65;139.3499,162.8404;Float;False;217;206;Specular;1;22;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.CommentaryNode;66;141.3923,384.184;Float;False;217;206;IndirectDiffuse;1;23;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.DynamicAppendNode;55;-1480.821,1108.424;Float;False;FLOAT4;4;0;FLOAT2;0,0;False;1;FLOAT;0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.VertexBinormalNode;3;-1529.645,152.0518;Float;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.DynamicAppendNode;21;193.7197,-180.654;Float;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;80;-821.8382,720.5581;Float;False;Property;g_flFresnelFalloff;Fresnel
+    Falloff Scaler;0;0;Fetch;False;0;0;False;0;1;0;0;2;0;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;25;190.6644,897.7751;Float;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;61;191.0398,34.35085;Float;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;16;-1818.106,351.4342;Float;False;Roughness;1;0;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;23;191.3923,434.184;Float;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DynamicAppendNode;22;189.3499,212.8404;Float;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;26;1022.118,135.2082;Float;False;5;5;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;10;-1520.257,-297.6237;Float;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.CustomExpressionNode;13;-560.1597,115.2006;Float;False;float4x4
+    packlighting@$$LightingTerms_t o@$$o.vDiffuse = float4( 0.0, 0.0, 0.0 , 0.0)@$o.vSpecular
+    = float3( 0.0, 0.0, 0.0 )@$o.vIndirectDiffuse = float3( 0.0, 0.0, 0.0 )@$o.vIndirectSpecular
+    = float3( 0.0, 0.0, 0.0 )@$o.vTransmissiveSunlight = float3( 0.0, 0.0, 0.0 )@$$$o
+    = ComputeLighting(vPositionWs.xyz, vNormalWs.xyz, vTangentUWs.xyz, vTangentVWs.xyz,
+    vRoughness.xyz, vReflectance.rgb, g_flFresnelExponent, vLightmapUV.xyzw, Dotfresnel)@$$packlighting
+    = float4x4(o.vDiffuse.rgba, o.vSpecular.rgb, o.vIndirectDiffuse.rgb, o.vIndirectSpecular.rgb,
+    o.vTransmissiveSunlight.rgb)@$$return packlighting@$$;6;False;11;False;vPositionWs;FLOAT3;0,0,0;In;;False;vNormalWs;FLOAT3;0,0,0;In;;False;vTangentUWs;FLOAT3;0,0,0;In;;False;vTangentVWs;FLOAT3;0,0,0;In;;False;vRoughness;FLOAT3;0,0,0;In;;False;vReflectance;FLOAT3;0,0,0;In;;False;g_flFresnelExponent;FLOAT;0;In;;True;vLightmapUV;FLOAT4;0,0,0,0;In;;False;Dotfresnel;FLOAT;0;In;;True;CubeMapScalar;FLOAT;0;In;;True;g_flFresnelFalloff;FLOAT;0;In;;Zero
+    Lighting;False;False;0;11;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;6;FLOAT;0;False;7;FLOAT4;0,0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.DynamicAppendNode;27;-1482.996,357.0897;Float;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionNode;82;779.1678,-453.1712;Float;False;zVRAO;-1;;9;ca6c653a883ea8f4ba759142697e1a06;0;1;4;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;18;-1896.295,704.7411;Float;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionInput;29;-1525.209,585.574;Float;False;Fresnel
+    Exponent;1;3;False;1;0;FLOAT;5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.DynamicAppendNode;24;197.1385,658.7985;Float;False;FLOAT3;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;33;412.0725,655.712;Float;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RangedFloatNode;74;-855.1064,624.3754;Float;False;Property;g_flCubeMapScalar;Cubemap
+    Scalar;1;1;[HideInInspector];Fetch;False;0;0;False;0;1;1;0;2;0;1;FLOAT;0\nNode;AmplifyShaderEditor.Vector4Node;46;-2404.688,1060.599;Float;False;Global;unity_LightmapST;unity_LightmapST;2;0;Fetch;True;0;0;False;0;0,0,0,0;1,1,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.VertexTangentNode;5;-1518.645,0.3256239;Float;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.TextureCoordinatesNode;78;-2413.8,1245.363;Float;False;2;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;53;-1932.236,1276.184;Float;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector4Node;49;-2455.135,1370.275;Float;False;Global;unity_DynamicLightmapST;unity_DynamicLightmapST;0;0;Fetch;True;0;0;False;0;0,0,0,0;1,1,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TextureCoordinatesNode;8;-2425.285,922.6478;Float;False;1;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SwizzleNode;51;-2157.729,1414.319;Float;False;FLOAT2;2;3;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SwizzleNode;50;-2158.365,1339.044;Float;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;42;-1724.778,1005.83;Float;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;32;403.6047,432.0744;Float;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;15;-2090.498,-459.9485;Float;False;Normal;3;2;False;1;0;FLOAT3;0,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;54;-1728.04,1277.237;Float;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMaxOpNode;34;413.3062,894.6973;Float;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;19;-206.5024,113.7925;Float;True;FLOAT4x4;1;0;FLOAT4x4;0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;59;1217.663,132.3589;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SwizzleNode;45;-2157.731,1042.049;Float;False;FLOAT2;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.DotProductOpNode;57;-1529.724,686.1273;Float;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SwizzleNode;43;-2159.414,1125.918;Float;False;FLOAT2;2;3;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;44;-1936.372,1002.507;Float;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.StaticSwitch;81;1382.932,-44.40684;Float;False;Property;_Keyword0;Receive
+    Shadows;2;0;Fetch;False;0;0;True;0;0;1;1;True;S_RECEIVE_SHADOWS;Toggle;2;Key0;Key1;9;1;FLOAT3;0,0,0;False;0;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;17;-1485.357,499.6103;Float;False;Reflectance;3;1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldNormalVector;11;-1855.922,-140.0414;Float;False;True;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionOutput;20;1799.32,18.8913;Float;False;True;Lighting
+    Output;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;79;-1316.741,715.7578;Float;False;False;Fresnel;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;55;0;42;0\nWireConnection;55;2;54;0\nWireConnection;21;0;19;0\nWireConnection;21;1;19;1\nWireConnection;21;2;19;2\nWireConnection;25;0;19;13\nWireConnection;25;1;19;14\nWireConnection;25;2;19;15\nWireConnection;61;0;19;3\nWireConnection;23;0;19;7\nWireConnection;23;1;19;8\nWireConnection;23;2;19;9\nWireConnection;22;0;19;4\nWireConnection;22;1;19;5\nWireConnection;22;2;19;6\nWireConnection;26;0;21;0\nWireConnection;26;1;22;0\nWireConnection;26;2;32;0\nWireConnection;26;3;33;0\nWireConnection;26;4;34;0\nWireConnection;13;0;10;0\nWireConnection;13;1;11;0\nWireConnection;13;2;5;0\nWireConnection;13;3;3;0\nWireConnection;13;4;27;0\nWireConnection;13;5;17;0\nWireConnection;13;6;29;0\nWireConnection;13;7;55;0\nWireConnection;13;8;57;0\nWireConnection;13;9;74;0\nWireConnection;13;10;80;0\nWireConnection;27;0;16;0\nWireConnection;82;4;15;0\nWireConnection;24;0;19;10\nWireConnection;24;1;19;11\nWireConnection;24;2;19;12\nWireConnection;33;0;24;0\nWireConnection;53;0;78;0\nWireConnection;53;1;50;0\nWireConnection;51;0;49;0\nWireConnection;50;0;49;0\nWireConnection;42;0;44;0\nWireConnection;42;1;43;0\nWireConnection;32;0;23;0\nWireConnection;54;0;53;0\nWireConnection;54;1;51;0\nWireConnection;34;0;25;0\nWireConnection;19;0;13;0\nWireConnection;59;0;26;0\nWireConnection;59;1;82;0\nWireConnection;45;0;46;0\nWireConnection;57;0;11;0\nWireConnection;57;1;18;0\nWireConnection;43;0;46;0\nWireConnection;44;0;8;0\nWireConnection;44;1;45;0\nWireConnection;81;1;26;0\nWireConnection;81;0;59;0\nWireConnection;11;0;15;0\nWireConnection;20;0;81;0\nWireConnection;79;0;57;0\nASEEND*/\n//CHKSM=ACE4F0073BF1432DF0D00C0D650DF36986E6C575"
+  m_functionName: 
+  m_description: General Lighting Terms. Multiply with albedo.
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 1
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_additionalDirectives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems:
+    - LineType: 0
+      LineValue: vr_utils.cginc
+    - LineType: 0
+      LineValue: UnityStandardUtils.cginc
+    - LineType: 0
+      LineValue: vr_StandardInput.cginc
+    - LineType: 0
+      LineValue: vr_lighting.cginc
+    - LineType: 0
+      LineValue: vr_fog.cginc
+    - LineType: 2
+      LineValue: multi_compile _ D_VALVE_SHADOWING_POINT_LIGHTS
+    - LineType: 2
+      LineValue: shader_feature D_CASTSHADOW
+    - LineType: 2
+      LineValue: shader_feature S_RECEIVE_SHADOWS
+    - LineType: 0
+      LineValue: vr_matrix_palette_skinning.cginc
+    - LineType: 2
+      LineValue: multi_compile_fwdbase
+  m_nodeCategory: 5
+  m_customNodeCategory: 
+  m_previewPosition: 0
