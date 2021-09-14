@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 #if !NET_CORE
 using System.ComponentModel;
 using System.Diagnostics;
@@ -14,12 +15,15 @@ using System.Security.Principal;
 #endif
 using uTinyRipper;
 using uTinyRipper.Converters;
+using uTinyRipperConsole.Exporters;
 using Object = uTinyRipper.Classes.Object;
 
 namespace uTinyRipperConsole
 {
 	public class Program
 	{
+		public const string additionalResourcesPath = @"\ExportResources";
+
 		public static bool AssetSelector(Object asset)
 		{
 			return true;
@@ -69,22 +73,34 @@ namespace uTinyRipperConsole
 				string exportPath = Path.Combine("Ripped", GameStructure.Name);
 				PrepareExportDirectory(exportPath);
 
+				// TextureAssetExporters and AudioAssetExporters are taken from GUI for PNG files, sprites, and Audio clips
+				// - Lakatrazz
+				TextureAssetExporter textureExporter = new TextureAssetExporter();
+				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Texture2D, textureExporter);
+				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Sprite, textureExporter);
 				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.TextAsset, new TextAssetExporter());
 				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Font, new FontAssetExporter());
 				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.MovieTexture, new MovieTextureAssetExporter());
+				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.AudioClip, new AudioAssetExporter());
 
 #if DEBUG
 				EngineAssetExporter engineExporter = new EngineAssetExporter();
-				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Material, engineExporter);
 				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Texture2D, engineExporter);
+				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Sprite, engineExporter);
+				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Material, engineExporter);
 				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Mesh, engineExporter);
 				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Shader, engineExporter);
 				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Font, engineExporter);
-				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.Sprite, engineExporter);
+				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.AudioClip, engineExporter);
 				GameStructure.FileCollection.Exporter.OverrideExporter(ClassIDType.MonoBehaviour, engineExporter);
 #endif
 
 				GameStructure.Export(exportPath, AssetSelector);
+
+				// Applies finishing touches to the exported path
+				// - Lakatrazz
+				PostExport(exportPath);
+
 				Logger.Log(LogType.Info, LogCategory.General, "Finished");
 			}
 #if !DEBUG_PROGRAM
@@ -109,6 +125,69 @@ namespace uTinyRipperConsole
 			{
 				DirectoryUtils.Delete(path, true);
 			}
+		}
+
+		private static void PostExport(string exportPath) {
+			CompressTextures(exportPath);
+			ValveVRFix(exportPath);
+			CopyExportResources(exportPath);
+		}
+
+		// Used for applying texture compression to all pngs so your project doesn't go to 80 GB
+		private static void CompressTextures(string exportPath) {
+			Logger.Log(LogType.Info, LogCategory.General, "Compressing all Textures...");
+			int compressedCount = 0;
+			string texturePath = Path.Combine(exportPath, "Assets/Texture2D/");
+			if (Directory.Exists(texturePath)) {
+				foreach (string fileName in Directory.GetFiles(texturePath)) {
+					try {
+						if (fileName.EndsWith(".png.meta")) {
+							string fileText = File.ReadAllText(fileName);
+							fileText = fileText.Replace("textureCompression: 0", "textureCompression: 1");
+							File.WriteAllText(fileName, fileText);
+							compressedCount++;
+						}
+					} catch { }
+				}
+			}
+			Logger.Log(LogType.Info, LogCategory.General, $"Finished compressing {compressedCount} textures.");
+		}
+
+		// Fixes weird issues with Valve/vr_standard in editor.
+		private static void ValveVRFix(string exportPath) {
+			Logger.Log(LogType.Info, LogCategory.General, "Fixing instanced variants...");
+			int variantCount = 0;
+			string materialPath = Path.Combine(exportPath, "Assets/Material/");
+			if (Directory.Exists(materialPath)) {
+				foreach (string fileName in Directory.GetFiles(materialPath)) {
+					try {
+						if (fileName.EndsWith(".mat")) {
+							string fileText = File.ReadAllText(fileName);
+							fileText = fileText.Replace("m_EnableInstancingVariants: 1", "m_EnableInstancingVariants: 0");
+							File.WriteAllText(fileName, fileText);
+							variantCount++;
+						}
+					} catch { }
+				}
+			}
+			Logger.Log(LogType.Info, LogCategory.General, $"Finished fixing {variantCount} instancing variants.");
+		}
+
+		// Used for copying extra asset files into the exported project
+		private static void CopyExportResources(string exportPath) {
+			Logger.Log(LogType.Info, LogCategory.General, "Copying additional resources...");
+			string workingPath = Application.StartupPath;
+			string resourcesPath = workingPath + additionalResourcesPath;
+
+#if DEBUG
+			Logger.Log(LogType.Info, LogCategory.General, $"Searching for Resources Path at {resourcesPath}.");
+#endif
+
+			if (Directory.Exists(resourcesPath))
+				DirectoryUtils.CopyDirectoryFiles(resourcesPath, exportPath);
+			else
+				Logger.Log(LogType.Error, LogCategory.General, "Missing additional resources path! You won't have fixed scripts, shaders, and other files!");
+
 		}
 
 #if !NET_CORE

@@ -5,10 +5,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1EC7FAF7-5D39-4868-A06F-C93018CD134F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>uTinyRipperConsole</RootNamespace>
     <AssemblyName>uTinyRipperCmd</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <ResolveNuGetPackages>false</ResolveNuGetPackages>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -26,6 +27,7 @@
     <BaseIntermediateOutputPath>..\Bins\obj\</BaseIntermediateOutputPath>
     <Prefer32Bit>false</Prefer32Bit>
     <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,25 +58,726 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="HLSLccWrapper">
+      <HintPath>..\Reference Assemblies\GUI\HLSLccWrapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="uTinyRipperCore">
+      <HintPath>..\Reference Assemblies\Core\uTinyRipperCore.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleLogger.cs" />
+    <Content Include="crunch.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="crunchunity.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\Scripts\Editor\GradientMakerEditor.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\Scripts\Editor\GradientMakerInspector.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\Scripts\Editor\GradientWrapper.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\Scripts\Editor\GUIGradientField.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\Balloon.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\Chronos\Reflection\UnityMember.cs" />
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\GradientMaker.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\LightCookieController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\openvr_api.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\OPS\Obfuscator\Attribute\DoNotMakeClassUnDecompileAbleAttribute.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\OPS\Obfuscator\Attribute\DoNotObfuscateClassAttribute.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\OPS\Obfuscator\Attribute\DoNotObfuscateMethodBodyAttribute.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\OPS\Obfuscator\Attribute\DoNotRenameAttribute.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\OPS\Obfuscator\Attribute\DoNotUseClassForFakeCodeAttribute.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\OPS\Obfuscator\DecryptReferenceType.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\OPS\Obfuscator\MessUpReferenceType.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\PuppetMasta\BaseEnemyConfig.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\StressLevelZero\Data\LootTableData.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\StressLevelZero\Data\SpawnableObject.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\StressLevelZero\Props\Weapons\AmmoPouch.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\StressLevelZero\Props\Weapons\MagazineReciever.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\UnityEngine\EventSystems\VRInputModule.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\ValveCamera.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\ValveFog.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\ValveOverrideLightmap.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\ValvePhotogrammetryGlobalSettings.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\ValveRealtimeLight.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Assembly-CSharp\ZRealtimeAO.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\Editor\NavMeshAssetManager.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\Editor\NavMeshComponentsGUIUtility.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\Editor\NavMeshLinkEditor.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\Editor\NavMeshModifierEditor.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\Editor\NavMeshModifierVolumeEditor.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\Editor\NavMeshSurfaceEditor.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\NavMeshLink.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\NavMeshModifier.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\NavMeshModifierVolume.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\NavMeshSurface.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\Oculus.VR\UnityEngine\EventSystems\OVRPointerEventData.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\TheLabRenderer\Editor\RealtimeLightGUI.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\TheLabRenderer\Editor\ValveAutoUpdateSettings.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\TheLabRenderer\Editor\ValveMenuTools.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\TheLabRenderer\Editor\ValveShaderGUI.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtinyExtensions\Audio\AudioAssetExporter.cs" />
+    <Compile Include="UtinyExtensions\Audio\AudioConverter.cs" />
+    <Compile Include="UtinyExtensions\Audio\AudioExportCollection.cs" />
+    <Compile Include="UtinyExtensions\FMOD Studio API\fmod.cs" />
+    <Compile Include="UtinyExtensions\FMOD Studio API\fmod_dsp.cs" />
+    <Compile Include="UtinyExtensions\FMOD Studio API\fmod_errors.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\ContainerType.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DDPFFlags.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DDSCaps2Flags.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DDSCapsFlags.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DDSContainer.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DDSContainerParameters.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DDSDFlags.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DDSFourCCType.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DDSPixelFormat.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\DDS\DXGIFormat.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\KTX\KTXBaseInternalFormat.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\KTX\KTXContainer.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\KTX\KTXContainerParameters.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\KTX\KTXFormat.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\KTX\KTXInternalFormat.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\KTX\KTXType.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\PVR\PVRChannelType.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\PVR\PVRColourSpace.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\PVR\PVRContainer.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\PVR\PVRContainerParameters.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\PVR\PVRFlag.cs" />
+    <Compile Include="UtinyExtensions\Texture containers\PVR\PVRPixelFormat.cs" />
+    <Compile Include="UtinyExtensions\Texture converters\AstcDecoder.cs" />
+    <Compile Include="UtinyExtensions\Texture converters\AtcDecoder.cs" />
+    <Compile Include="UtinyExtensions\Texture converters\DxtDecoder.cs" />
+    <Compile Include="UtinyExtensions\Texture converters\EtcDecoder.cs" />
+    <Compile Include="UtinyExtensions\Texture converters\PvrtcDecoder.cs" />
+    <Compile Include="UtinyExtensions\Texture converters\RgbConverter.cs" />
+    <Compile Include="UtinyExtensions\Texture converters\Yuy2Decoder.cs" />
+    <Compile Include="UtinyExtensions\Texture\QFORMAT.cs" />
+    <Compile Include="UtinyExtensions\Texture\TexgenpackTexturetype.cs" />
+    <Compile Include="UtinyExtensions\Texture\Texture2DExtensions.cs" />
+    <Compile Include="UtinyExtensions\Texture\TextureAssetExporter.cs" />
+    <Compile Include="UtinyExtensions\Texture\TextureContainer.cs" />
+    <Compile Include="UtinyExtensions\Texture\TextureConverter.cs" />
+    <Compile Include="UtinyExtensions\Texture\TextureFormatExtensions.cs" />
+    <Compile Include="UtinyExtensions\Utils\DirectBitmap.cs" />
+    <Compile Include="UtinyExtensions\Utils\PermissionValidator.cs" />
+    <Content Include="fmod.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="texgenpack.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="App.manifest" />
+    <Content Include="ExportResources\Assets\Font\Anton.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\Bangers.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\bioliquid-Regular.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\bioliquid-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\CCRobo SDF.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\CCRobo.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\CODE Bold.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\CODE Bold.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\CODE Light.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\CODE Light.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\LiberationSans.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\nasalization-rg.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\nasalization-rg.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\Oswald-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\TwinMarker SDF.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Font\TwinMarker.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\GradientMaker-Lite_Readme.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\adaptive_quality_debug.mat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\fonts &amp; materials\LiberationSans SDF.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\TMPro.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\TMPro_Properties.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\TMPro_Surface.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_bitmap-mobile.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_bitmap.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_sdf overlay.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_sdf-mobile masking.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_sdf-mobile overlay.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_sdf-mobile.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_sdf-surface-mobile.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_sdf-surface.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_sdf.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\shaders\tmp_sprite.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\sprite assets\Default Sprite Asset.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\sprite assets\EmojiOne.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\style sheets\TMP Default Style Sheet.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\TMP Settings.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\vr_cast_shadows.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\vr_cast_shadows.shader_trans">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\vr_quality_vis.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\vr_shadow_vis.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\Editor\NavMeshComponentsEditor.asmdef">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\NavMeshComponents\UnityEngine\AI\NavMeshComponents.asmdef">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Color Gradients\Blue to Purple - Vertical.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Color Gradients\Dark to Light Green - Vertical.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Color Gradients\Light to Dark Green - Vertical.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Color Gradients\Yellow to Orange - Vertical.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Gizmos\TextMeshPro Inline Graphics icon.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Gizmos\TMP - Dropdown Icon.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Gizmos\TMP - Font Asset Icon.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Gizmos\TMP - Input Field Icon.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Gizmos\TMP - Text Component Icon.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Box Area 85 Dark.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Box Area Dark %28LEFT%29.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Box Area Dark.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Box Area Light %28LEFT%29.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Box Area Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Box Area Medium %28LEFT%29.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Box Area Medium.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignBaseLine.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignBaseLine_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignBottom.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignBottom_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignCapLine.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignCapLine_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignCenter.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignCenterGeo.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignCenterGeo_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignCenter_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignFlush.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignFlush_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignJustified.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignJustified_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignLeft.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignLeft_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignMiddle.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignMiddle_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignMidLine.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignMidline_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignRight.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignRight_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignTop.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\btn_AlignTop_Light.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\progress bar %28Light%29.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\progress bar.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Square Box Area %2840 Grey%29.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\Textures\Square Box Area %2885 Grey%29.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\TMPro_DarkSkin.guiskin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\GUISkins\TMPro_LightSkin.guiskin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Sprites\EmojiOne.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\TextMeshPro-1.0.55.2017.2.0b12.asmdef">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\ASETemplateShadersVR_Unlit.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\KriptoFXRFX4LightningMobile.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\Shader ForgereflexScope.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZAdditive HDR.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZAdditive Hologram with Depth.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZCube Reflection.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZFlowmap Additive.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZFlowmap Alpha.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZFlowmap.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGibSkin.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGibSkinCrablet.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGibSkinMAS Transparent.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGibSkinMAS.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGibSkinMAS_Emissive.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGibSkinWire.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGlass.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGlowing Falloff.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZGrid Glitch.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZHighlighter.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZHolographic Portal.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZHolographic Projection.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZHolographic Visor.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZHolographic Wall Glitchy.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZHolographic Wall.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZIcon Billboard.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZLaser.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZLit Hologram.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZMod2x.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZMultiplicative Decal.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZMultiply.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZNothin.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZParticle Motion Vector.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZScanline.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZShadowOnly.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZSimple Fluorescence.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZSmokePoof.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZStochastic Hologram.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZStochastic Transparency.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZSwirlClouds.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZTexture Array Mod2x Decals.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZTexture Arrays.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZVertex Tinting.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZVoid.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZVoidBleed.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZVR ColorTint.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZVR Terrain.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZVR Texture Array Selector %28Buffered%29.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZVR_Triplanar.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZWhite Dimension.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\SLZZoomLens.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\Stylized FXShield.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\Valvevr_photogrammetry.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\Valvevr_skybox.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\Valvevr_standard.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\Voidpass.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\VRFog.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\VRStandardLighting.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\vr_fog.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\vr_lighting.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\vr_matrix_palette_skinning.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\vr_PCSS.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\vr_StandardInput.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\vr_utils.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\vr_zAO.cginc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\ZeroLabBuilt.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\ZeroLabVR_Dissolve.shader">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Shader\zVRAO.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Packages\manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\ProjectSettings\ProjectSettings.asset">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\uTinyRipperCore\uTinyRipperCore.csproj">
-      <Project>{ca9420f4-4b54-4727-91e6-cce20916d795}</Project>
-      <Name>uTinyRipperCore</Name>
-    </ProjectReference>
+    <Content Include="ExportResources\Assets\GradientMaker\Checker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\Gradients\gray_ramp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\Gradients\Smoke_sss.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\Gradients\SSS_rampscatter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\GradientMaker\Gradients\ToonGradient.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\LineBreaking Following Characters.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Resources\LineBreaking Leading Characters.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Sprites\Default Sprite Asset.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\Scripts\TextMeshPro-1.0.55.2017.2.0b12\TMPro\Sprites\EmojiOne.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\Assets\TheLabRenderer\Gizmos\pointshadow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExportResources\ProjectSettings\ProjectVersion.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>
