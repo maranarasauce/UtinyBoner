@@ -20,20 +20,22 @@ namespace uTinyRipper.Converters
 
 		public bool Export(IExportContainer container, Object asset, string path)
 		{
-			using (Stream fileStream = FileUtils.CreateVirtualFile(path))
-			{
-				using (BufferedStream stream = new BufferedStream(fileStream))
+			try {
+				using (Stream fileStream = FileUtils.CreateVirtualFile(path))
 				{
-					using (InvariantStreamWriter streamWriter = new InvariantStreamWriter(stream, UTF8))
+					using (BufferedStream stream = new BufferedStream(fileStream))
 					{
-						YAMLWriter writer = new YAMLWriter();
-						YAMLDocument doc = asset.ExportYAMLDocument(container);
-						writer.AddDocument(doc);
-						writer.Write(streamWriter);
+						using (InvariantStreamWriter streamWriter = new InvariantStreamWriter(stream, UTF8))
+						{
+							YAMLWriter writer = new YAMLWriter();
+							YAMLDocument doc = asset.ExportYAMLDocument(container);
+							writer.AddDocument(doc);
+							writer.Write(streamWriter);
+						}
 					}
 				}
-			}
-			return true;
+				return true;
+			} catch { return false; }
 		}
 
 		public void Export(IExportContainer container, Object asset, string path, Action<IExportContainer, Object, string> callback)

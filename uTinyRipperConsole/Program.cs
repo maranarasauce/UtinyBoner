@@ -101,7 +101,7 @@ namespace uTinyRipperConsole
 				// - Lakatrazz
 				PostExport(exportPath);
 
-				Logger.Log(LogType.Info, LogCategory.General, "Finished");
+				Logger.Log(LogType.Info, LogCategory.General, $"Finished with {ProjectExporter.successfulRips} successful exports and {ProjectExporter.failedRips} failed exports.");
 			}
 #if !DEBUG_PROGRAM
 			catch(Exception ex)
