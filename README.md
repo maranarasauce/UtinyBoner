@@ -34,27 +34,23 @@ Supported version: 2018.4.10f1
   * Camera
   * MonoBehaviour (Mono only)
   * MonoScript (Mono only)
+* Fixed BONEWORKS Scripts
+* Fixed BONEWORKS Shaders
+* TheLabRenderer
+* Working TextMeshPro (Not visible in editor atm)
 
 ## Structure
 
 * *uTinyRipperCore*
 
    Core library. It's designed as an single module without any third party dependencies.
-   
-* *uTinyRipperGUI*
-
-   Basic graphic interface application. It has some extra converters, so additionally it export:
-   * AudioClip .wav export
-   * Texture2D .png export (with Sprites)
-   * Shader DirectX blob export
-   * References to build-in Engine assets
+   Any time you make changes to this make sure to build it in order to update the references.
    
 * *uTinyRipperConsole* and *uTinyRipperConsoleNETCore*
 
    Sample console application which is designed to test Core library functionality.   
    It is command line console application. Drag and drop resource file(s) or/and folder(s) onto .exe to retrive assets. It will automaticly try to find resource dependencies, create 'Ripped' folder and extract all supported assets into created directory.
-   As it is a sample application so I'm not going to improve it in any way.
-
+   This has much faster export time than GUI, so GUI has been deprecated.
 
 
 ### Requirements:
