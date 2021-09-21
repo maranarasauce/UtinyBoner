@@ -17,6 +17,9 @@ namespace uTinyRipper.Converters
 		public event Action<int, int> EventExportProgressUpdated;
 		public event Action EventExportFinished;
 
+		public static int successfulRips = 0;
+		public static int failedRips = 0;
+
 		public ProjectExporter(IFileCollection fileCollection)
 		{
 			m_fileCollection = fileCollection;
@@ -258,9 +261,13 @@ namespace uTinyRipper.Converters
 				IExportCollection collection = collections[i];
 				container.CurrentCollection = collection;
 				bool isExported = collection.Export(container, path);
-				if (isExported)
-				{
+				if (isExported) {
 					Logger.Log(LogType.Info, LogCategory.Export, $"'{collection.Name}' exported");
+					successfulRips++;
+				}
+				else {
+					Logger.Log(LogType.Info, LogCategory.Export, $"'{collection.Name}' failed exporting");
+					failedRips++;
 				}
 				EventExportProgressUpdated?.Invoke(i, collections.Count);
 			}
